@@ -1,0 +1,68 @@
+@use '../abstracts/index' as *;
+
+.payment__card {
+  color: color(color-white);
+  font-size: font-size(font-size-xxs);
+}
+
+.background {
+  height: 240px;
+  width: 100%;
+  background: url('../../images/bg-main-mobile.png') no-repeat center/cover;
+  position: relative;
+}
+
+.payment__card--front-side,
+.payment__card--back-side {
+  position: absolute;
+}
+
+.payment__card--front-side img:first-of-type,
+.payment__card--back-side img {
+  width: 290px;
+}
+
+.payment__card--front-side {
+  position: absolute;
+  left: 1rem;
+  bottom: -2.9rem;
+  z-index: 2;
+
+  img.credit-card__logo {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 55px;
+  }
+}
+
+.payment__card-details {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1.1rem;
+  letter-spacing: 1.5px;
+
+  .payment__card-details--front-side__numbers {
+    font-size: font-size(font-size-m);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.payment__card--back-side {
+  right: 1rem;
+  top: 2rem;
+
+  &__cvc {
+    position: absolute;
+    top: 48%;
+    right: 2.3rem;
+    transform: translate(0, -50%);
+    letter-spacing: 1.5px;
+  }
+}

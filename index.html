@@ -11,8 +11,15 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="dist/css/main.css" />
+
     <title>Frontend Mentor | Interactive card details form</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="dist/css/main.css" />
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <!-- <style>
@@ -26,14 +33,42 @@
     </style> -->
   </head>
   <body>
-    <section class="'payment"></section>
-    0000 0000 0000 0000 Jane Appleseed 00/00 000 Cardholder Name e.g. Jane
-    Appleseed Card Number e.g. 1234 5678 9123 0000 Exp. Date (MM/YY) MM YY CVC
-    e.g. 123 Confirm
+    <section class="payment__card">
+      <!-- BACKGROUND -->
+      <div class="background">
+        <div class="payment__card--front-side">
+          <img src="images/bg-card-front.png" alt="credit card front side" />
+          <img
+            class="credit-card__logo"
+            src="images/card-logo.svg"
+            alt="credit card logo"
+          />
+          <div class="payment__card-details">
+            <p class="payment__card-details--front-side__numbers">
+              0000 0000 0000 0000
+            </p>
+            <p class="payment__card-details--front-side__cadholder-name">
+              Jane Appleseed
+            </p>
+            <p class="payment__card-details--front-side__expiry-date">00/00</p>
+          </div>
+        </div>
+
+        <div class="payment__card--back-side">
+          <img src="images/bg-card-back.png" alt="credit card back side" />
+          <p class="payment__card--back-side__cvc">000</p>
+        </div>
+      </div>
+      <!-- CARD FRONT -->
+
+      <!-- CARD BACK -->
+    </section>
+    <!-- 000 Cardholder Name e.g. Jane Appleseed Card Number e.g. 1234 5678 9123 0000
+    Exp. Date (MM/YY) MM YY CVC e.g. 123 Confirm -->
 
     <!-- Completed state start -->
 
-    Thank you! We've added your card details Continue
+    <!-- Thank you! We've added your card details Continue -->
 
     <!-- <div class="attribution">
       Challenge by

@@ -1,7 +1,2 @@
-@import 'master';
-$color: #f03;
-
-body {
-  background-color: #212222;
-  color: #fff;
-}
+@use 'layout/credit-card';
+@use 'layout/form';
