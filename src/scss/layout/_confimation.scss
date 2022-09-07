@@ -1,0 +1,16 @@
+@use '../abstracts/index' as *;
+
+.confimation-notice {
+  text-align: center;
+
+  //temporarly
+  display: none;
+
+  &__title {
+    margin: 2rem 0 1rem;
+  }
+
+  &__para {
+    margin-bottom: 3rem;
+  }
+}

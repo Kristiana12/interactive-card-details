@@ -20,7 +20,7 @@ export const styles = () => {
     .pipe(gulpif(PRODUCTION, postcss([autoprefixer])))
     .pipe(gulpif(PRODUCTION, cleanCss({ compatibility: 'ie8' })))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
-    .pipe(dest('dist/css'));
+    .pipe(dest('css'));
 };
 
 export const watchForChanges = () => {

@@ -1,1 +1,91 @@
 @use '../abstracts/index' as *;
+
+section.payment__form {
+  padding: 0 1rem;
+}
+
+form#payment {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+form label {
+  text-transform: uppercase;
+  display: block;
+  color: color(color-primary);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+form input {
+  border: 1px solid color(color-border);
+  border-radius: $border-radius;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+input:focus {
+  outline: none;
+}
+
+//style the input gradient border
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background-image: color(color-gradient);
+  z-index: -1;
+  border-radius: $border-radius;
+}
+
+.payment__form--row:not(:last-of-type) {
+  margin-bottom: 1.325rem;
+}
+
+.payment__form--row:last-of-type {
+  margin-bottom: 1.725rem;
+}
+
+.payment__form--row:nth-child(3) {
+  display: flex;
+  gap: 0.7rem;
+}
+
+// LAST ROW
+.payment__form--col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 40%;
+}
+
+.payment__form--col:first-of-type {
+  width: 60%;
+
+  label {
+    width: 100%;
+  }
+
+  .input-wrapper {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+button.btn-primary {
+  width: 100%;
+  background-color: color(color-primary);
+  color: color(color-white);
+  border: 0;
+  cursor: pointer;
+  padding: 1rem 0;
+  border-radius: $border-radius;
+  font-size: font-size(font-size-m);
+}

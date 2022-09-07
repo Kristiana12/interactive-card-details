@@ -1,13 +1,18 @@
 $colors: (
-  'color-background': #21092f,
+  'color-primary': #21092f,
   'color-placehoder': #8f8694,
   'color-border': #dfdee0,
   'color-error': #ff5050,
-  'color-gradinet': linear-gradient(#6348fe, #610595),
+  'color-gradient': linear-gradient(to right, #6348fe, #610595),
   'color-white': #ffffff,
 );
 
 $font-sizes: (
   'font-size-xxs': 0.6rem,
+  'font-size-xs': 0.75rem,
+  'font-size-s': 1rem,
   'font-size-m': 1.25rem,
+  'font-size-l': 1.75rem,
 );
+
+$border-radius: 8px;

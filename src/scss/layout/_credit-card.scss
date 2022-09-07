@@ -2,14 +2,16 @@
 
 .payment__card {
   color: color(color-white);
-  font-size: font-size(font-size-xxs);
+  background: url('../images/bg-main-mobile.png') no-repeat center/cover;
+  margin-bottom: 6rem;
 }
 
 .background {
   height: 240px;
   width: 100%;
-  background: url('../../images/bg-main-mobile.png') no-repeat center/cover;
   position: relative;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .payment__card--front-side,
@@ -22,11 +24,16 @@
   width: 290px;
 }
 
+// FRONT SIDE
 .payment__card--front-side {
   position: absolute;
-  left: 1rem;
-  bottom: -2.9rem;
+  left: calc(0.5rem + 3vw);
+  bottom: -2.7rem;
   z-index: 2;
+
+  img {
+    box-shadow: 0px 35px 26px -10px rgba(color(color-placehoder), 0.2);
+  }
 
   img.credit-card__logo {
     position: absolute;
@@ -45,17 +52,15 @@
   flex-wrap: wrap;
   gap: 1rem;
   padding: 0 1.1rem;
-  letter-spacing: 1.5px;
 
   .payment__card-details--front-side__numbers {
-    font-size: font-size(font-size-m);
     width: 100%;
-    text-align: center;
   }
 }
 
+// BACK SIDE
 .payment__card--back-side {
-  right: 1rem;
+  right: calc(0.5rem + 3vw);
   top: 2rem;
 
   &__cvc {
@@ -63,6 +68,5 @@
     top: 48%;
     right: 2.3rem;
     transform: translate(0, -50%);
-    letter-spacing: 1.5px;
   }
 }

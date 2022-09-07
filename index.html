@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="dist/css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <!-- <style>
@@ -33,38 +33,112 @@
     </style> -->
   </head>
   <body>
-    <section class="payment__card">
-      <!-- BACKGROUND -->
-      <div class="background">
-        <div class="payment__card--front-side">
-          <img src="images/bg-card-front.png" alt="credit card front side" />
-          <img
-            class="credit-card__logo"
-            src="images/card-logo.svg"
-            alt="credit card logo"
-          />
-          <div class="payment__card-details">
-            <p class="payment__card-details--front-side__numbers">
-              0000 0000 0000 0000
-            </p>
-            <p class="payment__card-details--front-side__cadholder-name">
-              Jane Appleseed
-            </p>
-            <p class="payment__card-details--front-side__expiry-date">00/00</p>
+    <main>
+      <header class="payment__card">
+        <div class="background">
+          <!-- FRONTSIDE -->
+          <div class="payment__card--front-side">
+            <img src="images/bg-card-front.png" alt="credit card front side" />
+            <img
+              class="credit-card__logo"
+              src="images/card-logo.svg"
+              alt="credit card logo"
+            />
+            <div class="payment__card-details">
+              <p class="payment__card-details--front-side__numbers">
+                0000 0000 0000 0000
+              </p>
+              <p class="payment__card-details--front-side__cadholder-name">
+                Jane Appleseed
+              </p>
+              <p class="payment__card-details--front-side__expiry-date">
+                00/00
+              </p>
+            </div>
+          </div>
+          <!-- BACKSIDE -->
+          <div class="payment__card--back-side">
+            <img src="images/bg-card-back.png" alt="credit card back side" />
+            <p class="payment__card--back-side__cvc">000</p>
           </div>
         </div>
+      </header>
+      <section class="payment__form">
+        <!-- FORM -->
+        <form action="" id="payment">
+          <div class="payment__form--row">
+            <label for="name"> Cardholder Name </label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="e.g. Jane Appleseed"
+              />
+            </div>
+          </div>
+          <div class="payment__form--row">
+            <label for="card-number"> Card Number</label>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                name="card-number"
+                id="card-number"
+                placeholder="e.g. 1234 5678 9123 0000"
+              />
+            </div>
+          </div>
+          <div class="payment__form--row">
+            <!-- COL 1 -->
+            <div class="payment__form--col">
+              <label for="exp-date">Exp. Date (MM/YY)</label>
+              <div class="input-wrapper">
+                <input
+                  type="number"
+                  placeholder="MM"
+                  name="exp-date"
+                  id="exp-date"
+                />
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="number"
+                  placeholder="YY"
+                  name="exp-date"
+                  id="exp-date"
+                />
+              </div>
+            </div>
+            <!-- COL 2 -->
+            <div class="payment__form--col">
+              <label for="cvc">cvc</label>
+              <div class="input-wrapper">
+                <input
+                  type="number"
+                  name="cvc"
+                  id="cvc"
+                  maxlength="3"
+                  minlength="3"
+                  placeholder="e.g. 123 "
+                />
+              </div>
+            </div>
+          </div>
+          <button class="btn-primary" id="submit">Confirm</button>
+        </form>
 
-        <div class="payment__card--back-side">
-          <img src="images/bg-card-back.png" alt="credit card back side" />
-          <p class="payment__card--back-side__cvc">000</p>
+        <div class="confimation-notice">
+          <img
+            class="confimation-notice__img"
+            src="images/icon-complete.svg"
+            alt="complete icon"
+          />
+          <h2 class="confimation-notice__title">Thank you!</h2>
+          <p class="confimation-notice__para">We've added your card details</p>
+          <button class="btn-primary">Continue</button>
         </div>
-      </div>
-      <!-- CARD FRONT -->
-
-      <!-- CARD BACK -->
-    </section>
-    <!-- 000 Cardholder Name e.g. Jane Appleseed Card Number e.g. 1234 5678 9123 0000
-    Exp. Date (MM/YY) MM YY CVC e.g. 123 Confirm -->
+      </section>
+    </main>
 
     <!-- Completed state start -->
 
@@ -76,5 +150,7 @@
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
     </div> -->
+
+    <script src="main.js"></script>
   </body>
 </html>

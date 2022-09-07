@@ -1,6 +1,28 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Space Grotesk', sans-serif;
+}
+
+// FORM
+::placeholder {
+  color: color(color-placeholder);
+  opacity: 0.4;
+}
+
+// Remove Arrows/Spinners
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
