@@ -1,0 +1,8 @@
+@use 'variables' as *;
+@use 'functions' as *;
+
+@mixin media-big-tablet {
+  @media screen and (min-width: break-points(break-point-big-tablet)) {
+    @content;
+  }
+}

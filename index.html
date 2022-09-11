@@ -45,27 +45,37 @@
               alt="credit card logo"
             />
             <div class="payment__card-details">
-              <p class="payment__card-details--front-side__numbers">
+              <p
+                id="front__card-numbers"
+                class="payment__card-details--front-side__numbers"
+              >
                 0000 0000 0000 0000
               </p>
-              <p class="payment__card-details--front-side__cadholder-name">
+              <p
+                id="front__card-name"
+                class="payment__card-details--front-side__cadholder-name"
+              >
                 Jane Appleseed
               </p>
-              <p class="payment__card-details--front-side__expiry-date">
-                00/00
+              <p
+                id="front__card-exp-date"
+                class="payment__card-details--front-side__expiry-date"
+              >
+                <span id="exp-month">00</span>/<span id="exp-year">00</span>
               </p>
             </div>
           </div>
           <!-- BACKSIDE -->
           <div class="payment__card--back-side">
             <img src="images/bg-card-back.png" alt="credit card back side" />
-            <p class="payment__card--back-side__cvc">000</p>
+            <p id="back__card-cvc" class="payment__card--back-side__cvc">000</p>
           </div>
         </div>
       </header>
+
       <section class="payment__form">
         <!-- FORM -->
-        <form action="" id="payment">
+        <form action="" id="payment" name="payment">
           <div class="payment__form--row">
             <label for="name"> Cardholder Name </label>
             <div class="input-wrapper">
@@ -74,6 +84,7 @@
                 name="name"
                 id="name"
                 placeholder="e.g. Jane Appleseed"
+                maxlength="26"
               />
             </div>
           </div>
@@ -85,27 +96,34 @@
                 name="card-number"
                 id="card-number"
                 placeholder="e.g. 1234 5678 9123 0000"
+                maxlength="19"
               />
             </div>
           </div>
           <div class="payment__form--row">
             <!-- COL 1 -->
             <div class="payment__form--col">
-              <label for="exp-date">Exp. Date (MM/YY)</label>
+              <label for="exp-month">Exp. Date (MM/YY)</label>
               <div class="input-wrapper">
                 <input
-                  type="number"
+                  type="text"
+                  name="exp-month"
+                  id="exp-month"
+                  pattern="\d*"
+                  maxlength="2"
                   placeholder="MM"
-                  name="exp-date"
-                  id="exp-date"
+                  onkeydown="return onlyNumberKey(event)"
                 />
               </div>
               <div class="input-wrapper">
                 <input
-                  type="number"
+                  type="text"
+                  name="exp-year"
+                  id="exp-year"
+                  maxlength="4"
+                  pattern="\d*"
                   placeholder="YY"
-                  name="exp-date"
-                  id="exp-date"
+                  onkeydown="return onlyNumberKey(event)"
                 />
               </div>
             </div>
@@ -114,12 +132,14 @@
               <label for="cvc">cvc</label>
               <div class="input-wrapper">
                 <input
-                  type="number"
+                  type="text"
                   name="cvc"
                   id="cvc"
                   maxlength="3"
                   minlength="3"
-                  placeholder="e.g. 123 "
+                  placeholder="e.g. 123"
+                  pattern="\d*"
+                  onkeydown="return onlyNumberKey(event)"
                 />
               </div>
             </div>

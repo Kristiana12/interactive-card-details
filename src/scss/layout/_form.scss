@@ -1,7 +1,11 @@
 @use '../abstracts/index' as *;
 
 section.payment__form {
-  padding: 0 1rem;
+  padding: 0 1rem 3rem;
+
+  @include media-big-tablet {
+    align-self: center;
+  }
 }
 
 form#payment {
@@ -29,12 +33,12 @@ input:focus {
   outline: none;
 }
 
-//style the input gradient border
 .input-wrapper {
   position: relative;
 }
 
-.input-wrapper::before {
+//style the input gradient border though js
+.input-wrapper-border::before {
   content: '';
   position: absolute;
   left: -1px;
@@ -88,4 +92,21 @@ button.btn-primary {
   padding: 1rem 0;
   border-radius: $border-radius;
   font-size: font-size(font-size-m);
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+button.btn-primary:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.error-message > p {
+  margin-top: 0.5rem;
+  font-size: font-size(font-size-xxs);
+  color: color(color-error);
+  font-weight: 500;
+}
+
+.error-message > input {
+  border: 1px solid color(color-error);
 }

@@ -1,9 +1,22 @@
 @use '../abstracts/index' as *;
 
+//big-tablet layout
+@include media-big-tablet {
+  main {
+    display: grid;
+    grid-template-columns: 483px 1fr;
+    grid-template-rows: 100vh;
+    max-width: 1500px;
+  }
+}
+
 .payment__card {
   color: color(color-white);
   background: url('../images/bg-main-mobile.png') no-repeat center/cover;
   margin-bottom: 6rem;
+  @include media-big-tablet {
+    margin-bottom: 0;
+  }
 }
 
 .background {
@@ -12,6 +25,10 @@
   position: relative;
   max-width: 700px;
   margin: 0 auto;
+
+  @include media-big-tablet {
+    height: 100vh;
+  }
 }
 
 .payment__card--front-side,
@@ -22,6 +39,10 @@
 .payment__card--front-side img:first-of-type,
 .payment__card--back-side img {
   width: 290px;
+
+  @include media-big-tablet {
+    width: 448px;
+  }
 }
 
 // FRONT SIDE
@@ -30,6 +51,11 @@
   left: calc(0.5rem + 3vw);
   bottom: -2.7rem;
   z-index: 2;
+
+  @include media-big-tablet {
+    bottom: 50%;
+    left: 124px;
+  }
 
   img {
     box-shadow: 0px 35px 26px -10px rgba(color(color-placehoder), 0.2);
@@ -40,18 +66,30 @@
     left: 1rem;
     top: 1rem;
     width: 55px;
+
+    @include media-big-tablet {
+      top: 28px;
+      left: 2rem;
+    }
   }
 }
 
 .payment__card-details {
   position: absolute;
   bottom: 1.5rem;
-  left: 0;
+  left: 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 0 1.1rem;
+  max-width: 250px;
+
+  @include media-big-tablet {
+    max-width: 370px;
+    left: 39px;
+    bottom: 1.95rem;
+    gap: 1.625rem;
+  }
 
   .payment__card-details--front-side__numbers {
     width: 100%;
@@ -63,10 +101,20 @@
   right: calc(0.5rem + 3vw);
   top: 2rem;
 
+  @include media-big-tablet {
+    top: 53%;
+    left: 200px;
+    width: 100%;
+  }
+
   &__cvc {
     position: absolute;
     top: 48%;
     right: 2.3rem;
     transform: translate(0, -50%);
+
+    @include media-big-tablet {
+      right: 5.2rem;
+    }
   }
 }

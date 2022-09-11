@@ -7,3 +7,7 @@
 @function font-size($font-size) {
   @return map-get(variables.$font-sizes, $font-size);
 }
+
+@function break-points($break-point) {
+  @return map-get(variables.$break-points, $break-point);
+}
