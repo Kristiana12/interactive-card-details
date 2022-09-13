@@ -12,12 +12,24 @@ const cardNameEL = document.getElementById('front__card-name');
 const cardExpDateEL = document.getElementById('front__card-exp-date');
 const cardCVCEL = document.getElementById('back__card-cvc');
 
+//remove error Message when input not empty
+const removeErrorMessage = (input) => {
+  //Remove error messages
+  const errorMessage = document.querySelector('input + p');
+
+  if (!input) {
+    input.parentNode.classList.remove('error-message');
+    errorMessage.remove();
+  }
+};
+
 //Display Cardholder Name
 const displayCardholderName = () => {
   //replacing all numbers to empty strings
   const cardholderName = inputName.value.replace(/[0-9]/g, '');
   //Mutating the UI
   cardNameEL.textContent = cardholderName.toUpperCase().trim();
+  removeErrorMessage(inputName);
 };
 
 //Allow only numbers to be pressed on Card Numbers
@@ -44,7 +56,6 @@ const displayErrorMessage = (inputField) => {
   if (inputField.value === '') {
     let errorMessage = "Can't be blank";
 
-    console.log(inputField.parentNode);
     inputField.parentNode.classList.add('error-message');
     inputField.insertAdjacentHTML('afterend', `<p>${errorMessage}</p>`);
   }
@@ -84,6 +95,5 @@ btnSubmit.addEventListener('click', (e) => {
   const inputWrappers = document.querySelectorAll('.input-wrapper');
   inputs.forEach((input) => {
     displayErrorMessage(input);
-    console.log('h');
   });
 });

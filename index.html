@@ -61,7 +61,9 @@
                 id="front__card-exp-date"
                 class="payment__card-details--front-side__expiry-date"
               >
-                <span id="exp-month">00</span>/<span id="exp-year">00</span>
+                <span id="exp-month-card">00</span>/<span id="exp-year-card"
+                  >00</span
+                >
               </p>
             </div>
           </div>
@@ -75,7 +77,7 @@
 
       <section class="payment__form">
         <!-- FORM -->
-        <form action="" id="payment" name="payment">
+        <form action="GET" id="payment" name="payment">
           <div class="payment__form--row">
             <label for="name"> Cardholder Name </label>
             <div class="input-wrapper">
@@ -96,7 +98,6 @@
                 name="card-number"
                 id="card-number"
                 placeholder="e.g. 1234 5678 9123 0000"
-                maxlength="19"
               />
             </div>
           </div>
