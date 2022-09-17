@@ -5,10 +5,12 @@ section.payment__form {
 
   @include media-big-tablet {
     align-self: center;
+    padding: 0 1rem;
   }
 }
 
-form#payment {
+form#payment,
+.confimation-notice {
   max-width: 380px;
   margin: 0 auto;
 }

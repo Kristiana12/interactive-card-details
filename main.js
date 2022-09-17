@@ -63,29 +63,12 @@ const cardNumbersValidation = (input, e) => {
   }
 };
 
-// SUBMIT
-btnSubmit.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  inputs.forEach((input, i) => {
-    //Show error when empty
-    checkIfBlank(input);
-
-    //Check if the inputs have the right length
-    //cardnumbers
-    if (i === 1 && input.value.length < 16) {
-      showErrorMessage(input, `Numbers missing`);
-    } else if (i === 3 && input.value.length < 2) {
-      showErrorMessage(input, `Invalid year`);
-    } else if (i === 4 && input.value.length < 3) {
-      showErrorMessage(input, `Invalid CVC`);
-    }
-  });
-});
-
 inputName.addEventListener('input', () => {
   const inputNameValue = inputName.value;
   cardNameEL.innerHTML = inputNameValue.toUpperCase().trim();
+  if (inputNameValue !== '') {
+    hideErrorMessage(inputName);
+  }
 });
 
 inputCardNumber.addEventListener('keyup', (e) => {
@@ -140,5 +123,43 @@ inputCVC.addEventListener('keyup', (e) => {
   } else {
     hideErrorMessage(inputCVC);
     cardCVCEL.innerHTML = inputCVCValue;
+  }
+});
+
+// SUBMIT
+btnSubmit.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const inputsValidation = [];
+
+  inputs.forEach((input, i) => {
+    //Show error when empty
+    checkIfBlank(input);
+    //Check if the inputs have the right length
+    //cardnumbers
+    if (i === 1 && input.value.length < 16) {
+      showErrorMessage(input, `Numbers missing`);
+    } else if (i === 3 && input.value.length < 2) {
+      showErrorMessage(input, `Invalid year`);
+    } else if (i === 4 && input.value.length < 3) {
+      showErrorMessage(input, `Invalid CVC`);
+    }
+
+    inputsValidation.push(input.checkValidity());
+  });
+
+  //Check if all fields are valid with the pattern help on HTML
+  let formValid = true;
+
+  if (inputsValidation.includes(false)) {
+    formValid = false;
+  }
+
+  if (formValid) {
+    const form = document.getElementById('payment');
+    const confirmation = document.querySelector('.confimation-notice');
+
+    form.style.display = 'none';
+    confirmation.style.display = 'block';
   }
 });
