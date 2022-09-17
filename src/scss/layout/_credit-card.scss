@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: 483px 1fr;
     grid-template-rows: 100vh;
-    max-width: 1500px;
+    max-width: 1600px;
   }
 }
 
@@ -53,12 +53,16 @@
   z-index: 2;
 
   @include media-big-tablet {
-    bottom: 50%;
-    left: 124px;
+    bottom: 52%;
+    left: 144px;
   }
 
   img {
-    box-shadow: 0px 35px 26px -10px rgba(color(color-placehoder), 0.2);
+    filter: drop-shadow(0px 35px 26px rgba(color(color-placehoder), 0.2));
+
+    @include media-big-tablet {
+      filter: drop-shadow(15px 15px 20px rgba(color(color-placehoder), 0.2));
+    }
   }
 
   img.credit-card__logo {
@@ -85,6 +89,7 @@
   max-width: 250px;
 
   @include media-big-tablet {
+    width: 100%;
     max-width: 370px;
     left: 39px;
     bottom: 1.95rem;
@@ -94,6 +99,10 @@
   .payment__card-details--front-side__numbers {
     width: 100%;
   }
+
+  .payment__card-details--front-side__exp-date {
+    margin-left: auto;
+  }
 }
 
 // BACK SIDE
@@ -102,9 +111,19 @@
   top: 2rem;
 
   @include media-big-tablet {
-    top: 53%;
-    left: 200px;
+    top: 51%;
+    left: calc(100px + 8vw);
     width: 100%;
+  }
+
+  @include media-desktop {
+    left: 258px;
+  }
+
+  img {
+    @include media-big-tablet {
+      filter: drop-shadow(15px 15px 20px rgba(color(color-placehoder), 0.2));
+    }
   }
 
   &__cvc {

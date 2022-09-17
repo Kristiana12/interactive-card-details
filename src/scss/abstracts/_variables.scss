@@ -5,6 +5,8 @@ $colors: (
   'color-error': #ff5050,
   'color-gradient': linear-gradient(to right, #6348fe, #610595),
   'color-white': #ffffff,
+  'color-border-1': #6348fe,
+  'color-border-2': #610595,
 );
 
 $font-sizes: (
@@ -18,6 +20,7 @@ $font-sizes: (
 
 $break-points: (
   'break-point-big-tablet': 1200px,
+  'break-point-desktop': 1400px,
 );
 
 $border-radius: 8px;

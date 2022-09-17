@@ -57,10 +57,7 @@
               >
                 Jane Appleseed
               </p>
-              <p
-                id="front__card-exp-date"
-                class="payment__card-details--front-side__expiry-date"
-              >
+              <p class="payment__card-details--front-side__exp-date">
                 <span id="exp-month-card">00</span>/<span id="exp-year-card"
                   >00</span
                 >
@@ -77,28 +74,35 @@
 
       <section class="payment__form">
         <!-- FORM -->
-        <form action="GET" id="payment" name="payment">
+        <form action="POST" id="payment" name="payment">
           <div class="payment__form--row">
             <label for="name"> Cardholder Name </label>
             <div class="input-wrapper">
+              <!-- ONLY LETTERS ALLOWED -->
               <input
                 type="text"
                 name="name"
                 id="name"
                 placeholder="e.g. Jane Appleseed"
-                maxlength="26"
+                maxlength="30"
+                onkeydown="return /[a-z\s]/i.test(event.key)"
+                required
               />
+              <p class="hide"></p>
             </div>
           </div>
           <div class="payment__form--row">
             <label for="card-number"> Card Number</label>
             <div class="input-wrapper">
               <input
-                type="number"
+                type="text"
                 name="card-number"
                 id="card-number"
                 placeholder="e.g. 1234 5678 9123 0000"
+                maxlength="16"
+                required
               />
+              <p class="hide"></p>
             </div>
           </div>
           <div class="payment__form--row">
@@ -113,19 +117,21 @@
                   pattern="\d*"
                   maxlength="2"
                   placeholder="MM"
-                  onkeydown="return onlyNumberKey(event)"
+                  required
                 />
+                <p class="hide"></p>
               </div>
               <div class="input-wrapper">
                 <input
                   type="text"
                   name="exp-year"
                   id="exp-year"
-                  maxlength="4"
+                  maxlength="2"
                   pattern="\d*"
                   placeholder="YY"
-                  onkeydown="return onlyNumberKey(event)"
+                  required
                 />
+                <p class="hide"></p>
               </div>
             </div>
             <!-- COL 2 -->
@@ -137,11 +143,11 @@
                   name="cvc"
                   id="cvc"
                   maxlength="3"
-                  minlength="3"
                   placeholder="e.g. 123"
                   pattern="\d*"
-                  onkeydown="return onlyNumberKey(event)"
+                  required
                 />
+                <p class="hide"></p>
               </div>
             </div>
           </div>

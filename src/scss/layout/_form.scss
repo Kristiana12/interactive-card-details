@@ -30,24 +30,12 @@ form input {
 }
 
 input:focus {
-  outline: none;
-}
-
-.input-wrapper {
-  position: relative;
-}
-
-//style the input gradient border though js
-.input-wrapper-border::before {
-  content: '';
-  position: absolute;
-  left: -1px;
-  top: -1px;
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  background-image: color(color-gradient);
-  z-index: -1;
-  border-radius: $border-radius;
+  outline: 0;
+  border-width: 1.5px;
+  border-top-color: color(color-border-2);
+  border-left-color: color(color-border-2);
+  border-right-color: color(color-border-1);
+  border-bottom-color: color(color-border-1);
 }
 
 .payment__form--row:not(:last-of-type) {
@@ -60,6 +48,7 @@ input:focus {
 
 .payment__form--row:nth-child(3) {
   display: flex;
+  align-items: flex-start;
   gap: 0.7rem;
 }
 
@@ -93,11 +82,14 @@ button.btn-primary {
   border-radius: $border-radius;
   font-size: font-size(font-size-m);
   transition: transform 0.4s, opacity 0.4s;
-}
-
-button.btn-primary:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+  &:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+  &:active {
+    transform: scale(1.01);
+    opacity: 1;
+  }
 }
 
 .error-message > p {
@@ -105,6 +97,7 @@ button.btn-primary:hover {
   font-size: font-size(font-size-xxs);
   color: color(color-error);
   font-weight: 500;
+  display: none;
 }
 
 .error-message > input {

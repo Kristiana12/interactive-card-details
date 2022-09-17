@@ -6,3 +6,8 @@
     @content;
   }
 }
+@mixin media-desktop {
+  @media screen and (min-width: break-points(break-point-desktop)) {
+    @content;
+  }
+}
