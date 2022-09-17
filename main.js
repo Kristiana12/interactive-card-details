@@ -173,9 +173,9 @@ btnSubmit.addEventListener('click', (e) => {
     form.style.display = 'none';
     confirmation.style.display = 'block';
 
+    //Reset inputs and Card Information
     const btnContinue = document.getElementById('confirmed');
     btnContinue.addEventListener('click', () => {
-      // Reset input values
       inputs.forEach((input) => {
         input.value = '';
       });
