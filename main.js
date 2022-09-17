@@ -13,6 +13,19 @@ const cardExpMonthEL = document.getElementById('exp-month-card');
 const cardExpYearEL = document.getElementById('exp-year-card');
 const cardCVCEL = document.getElementById('back__card-cvc');
 
+const form = document.getElementById('payment');
+const confirmation = document.querySelector('.confimation-notice');
+
+const resetCardInformation = () => {
+  cardNumbersEL.innerHTML = `0000 0000 0000 0000`;
+  cardNameEL.innerHTML = `Jane Appleseed`;
+  cardExpMonthEL.innerHTML = `00`;
+  cardExpYearEL.innerHTML = `00`;
+  cardCVCEL.innerHTML = `000`;
+  form.style.display = 'block';
+  confirmation.style.display = 'none';
+};
+
 //Show Error
 const showErrorMessage = (input, message) => {
   const errorMessage = message;
@@ -45,7 +58,7 @@ const cardNumbersValidation = (input, e) => {
   //Remove all strings from being shown on the card UI
   let cardNumberValue = inputCardNumber.value.trim().replace(/[a-zA-Z]/g, '');
   //Allow only numbers and backspace
-  if (cardNumberValue.length < 16) {
+  if (cardNumberValue.length < 17) {
     if (
       (e.keyCode > 48 && e.keyCode < 58) ||
       e.keyCode === 8 ||
@@ -63,7 +76,7 @@ const cardNumbersValidation = (input, e) => {
   }
 };
 
-inputName.addEventListener('input', () => {
+inputName.addEventListener('keyup', () => {
   const inputNameValue = inputName.value;
   cardNameEL.innerHTML = inputNameValue.toUpperCase().trim();
   if (inputNameValue !== '') {
@@ -76,7 +89,7 @@ inputCardNumber.addEventListener('keyup', (e) => {
 });
 
 //Validate Month
-inputExpMonth.addEventListener('input', (e) => {
+inputExpMonth.addEventListener('keyup', (e) => {
   const inputExpMonthValue = inputExpMonth.value;
 
   if (isNaN(+inputExpMonthValue)) {
@@ -133,17 +146,18 @@ btnSubmit.addEventListener('click', (e) => {
   const inputsValidation = [];
 
   inputs.forEach((input, i) => {
+    //Check if the inputs have the right length
+
+    if (i === 1 && input.value.length < 16) {
+      showErrorMessage(input, `Numbers missing`); //cardnumbers
+    } else if (i === 3 && input.value.length < 2) {
+      showErrorMessage(input, `Invalid year`); //year
+    } else if (i === 4 && input.value.length < 3) {
+      showErrorMessage(input, `Invalid CVC`); //cvc
+    }
+
     //Show error when empty
     checkIfBlank(input);
-    //Check if the inputs have the right length
-    //cardnumbers
-    if (i === 1 && input.value.length < 16) {
-      showErrorMessage(input, `Numbers missing`);
-    } else if (i === 3 && input.value.length < 2) {
-      showErrorMessage(input, `Invalid year`);
-    } else if (i === 4 && input.value.length < 3) {
-      showErrorMessage(input, `Invalid CVC`);
-    }
 
     inputsValidation.push(input.checkValidity());
   });
@@ -156,10 +170,17 @@ btnSubmit.addEventListener('click', (e) => {
   }
 
   if (formValid) {
-    const form = document.getElementById('payment');
-    const confirmation = document.querySelector('.confimation-notice');
-
     form.style.display = 'none';
     confirmation.style.display = 'block';
+
+    const btnContinue = document.getElementById('confirmed');
+    btnContinue.addEventListener('click', () => {
+      // Reset input values
+      inputs.forEach((input) => {
+        input.value = '';
+      });
+
+      resetCardInformation();
+    });
   }
 });
