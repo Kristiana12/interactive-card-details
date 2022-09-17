@@ -146,8 +146,9 @@ btnSubmit.addEventListener('click', (e) => {
   const inputsValidation = [];
 
   inputs.forEach((input, i) => {
+    //Show error when empty
+    checkIfBlank(input);
     //Check if the inputs have the right length
-
     if (i === 1 && input.value.length < 16) {
       showErrorMessage(input, `Numbers missing`); //cardnumbers
     } else if (i === 3 && input.value.length < 2) {
@@ -155,9 +156,6 @@ btnSubmit.addEventListener('click', (e) => {
     } else if (i === 4 && input.value.length < 3) {
       showErrorMessage(input, `Invalid CVC`); //cvc
     }
-
-    //Show error when empty
-    checkIfBlank(input);
 
     inputsValidation.push(input.checkValidity());
   });
