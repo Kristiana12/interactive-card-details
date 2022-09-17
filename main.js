@@ -148,6 +148,7 @@ btnSubmit.addEventListener('click', (e) => {
   inputs.forEach((input, i) => {
     //Show error when empty
     checkIfBlank(input);
+
     //Check if the inputs have the right length
     if (i === 1 && input.value.length < 16) {
       showErrorMessage(input, `Numbers missing`); //cardnumbers

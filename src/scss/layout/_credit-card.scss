@@ -2,6 +2,9 @@
 
 //big-tablet layout
 @include media-big-tablet {
+  body {
+    overflow-x: hidden;
+  }
   main {
     display: grid;
     grid-template-columns: 483px 960px;
