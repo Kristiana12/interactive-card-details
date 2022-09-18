@@ -76,7 +76,7 @@ const cardNumbersValidation = (input, e) => {
   }
 };
 
-inputName.addEventListener('keyup', () => {
+inputName.addEventListener('input', () => {
   const inputNameValue = inputName.value;
   cardNameEL.innerHTML = inputNameValue.toUpperCase().trim();
   if (inputNameValue !== '') {
@@ -84,12 +84,12 @@ inputName.addEventListener('keyup', () => {
   }
 });
 
-inputCardNumber.addEventListener('keyup', (e) => {
+inputCardNumber.addEventListener('input', (e) => {
   cardNumbersValidation(inputCardNumber, e);
 });
 
 //Validate Month
-inputExpMonth.addEventListener('keyup', (e) => {
+inputExpMonth.addEventListener('input', (e) => {
   const inputExpMonthValue = inputExpMonth.value;
 
   if (isNaN(+inputExpMonthValue)) {
@@ -113,7 +113,7 @@ inputExpMonth.addEventListener('keyup', (e) => {
 });
 
 // Check Year
-inputExpYear.addEventListener('keyup', () => {
+inputExpYear.addEventListener('input', () => {
   const inputExpYearValue = inputExpYear.value;
 
   if (+inputExpYearValue > 0 && +inputExpYearValue < 99) {
@@ -128,7 +128,7 @@ inputExpYear.addEventListener('keyup', () => {
 });
 
 //CVC UI
-inputCVC.addEventListener('keyup', (e) => {
+inputCVC.addEventListener('input', (e) => {
   const inputCVCValue = inputCVC.value;
 
   if (isNaN(+inputCVCValue)) {
