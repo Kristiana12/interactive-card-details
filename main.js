@@ -17,11 +17,10 @@ const form = document.getElementById('payment');
 const confirmation = document.querySelector('.confimation-notice');
 
 const resetCardInformation = () => {
-  cardNumbersEL.innerHTML = `0000 0000 0000 0000`;
-  cardNameEL.innerHTML = `Jane Appleseed`;
-  cardExpMonthEL.innerHTML = `00`;
-  cardExpYearEL.innerHTML = `00`;
-  cardCVCEL.innerHTML = `000`;
+  cardNumbersEL.textContent = `0000 0000 0000 0000`;
+  cardNameEL.textContent = `Jane Appleseed`;
+  cardExpMonthEL.textContent = cardExpYearEL.textContent = `00`;
+  cardCVCEL.textContent = `000`;
   form.style.display = 'block';
   confirmation.style.display = 'none';
 };
@@ -32,7 +31,7 @@ const showErrorMessage = (input, message) => {
   const paragraph = input.nextElementSibling;
 
   paragraph.style.display = 'block';
-  paragraph.innerHTML = errorMessage;
+  paragraph.textContent = errorMessage;
   input.parentNode.classList.add('error-message');
 };
 
@@ -54,9 +53,26 @@ function checkIfBlank(input) {
 }
 
 //Validate Card Numbers
-const cardNumbersValidation = (input, e) => {
+const cardNumbersValidation = (input) => {
   //Remove all strings from being shown on the card UI
-  let cardNumberValue = inputCardNumber.value.trim().replace(/[a-zA-Z]/g, '');
+  let cardNumberValue = input.value.trim().replace(/[a-zA-Z]/g, '');
+
+  //Allow only numbers -- NEW WAY
+  const regex = /[a-zA-Z\s]/i;
+  const value = input.value;
+
+  if (cardNumberValue.length < 17) {
+    if (value.match(regex)) {
+      showErrorMessage(input, 'Wrong format, numbers only');
+    } else {
+      //Add space after every 4th element
+      cardNumbersEL.textContent = cardNumberValue.replace(/\d{4}(?=.)/g, '$& ');
+      hideErrorMessage(input);
+    }
+  }
+
+  /* OLD WAY */
+  /* 
   //Allow only numbers and backspace
   if (cardNumberValue.length < 17) {
     if (
@@ -74,18 +90,19 @@ const cardNumbersValidation = (input, e) => {
       showErrorMessage(input, 'Wrong format, numbers only');
     }
   }
+  */
 };
 
 inputName.addEventListener('input', () => {
   const inputNameValue = inputName.value;
-  cardNameEL.innerHTML = inputNameValue.toUpperCase().trim();
+  cardNameEL.textContent = inputNameValue.toUpperCase().trim();
   if (inputNameValue !== '') {
     hideErrorMessage(inputName);
   }
 });
 
 inputCardNumber.addEventListener('input', (e) => {
-  cardNumbersValidation(inputCardNumber, e);
+  cardNumbersValidation(inputCardNumber);
 });
 
 //Validate Month
@@ -97,16 +114,16 @@ inputExpMonth.addEventListener('input', (e) => {
     console.log(isNaN(+inputExpMonthValue));
   } else if (+inputExpMonthValue > 1 && +inputExpMonthValue < 10) {
     hideErrorMessage(inputExpMonth);
-    cardExpMonthEL.innerHTML = `0${inputExpMonthValue}`;
+    cardExpMonthEL.textContent = `0${inputExpMonthValue}`;
   } else if (+inputExpMonthValue >= 10 && +inputExpMonthValue < 13) {
     hideErrorMessage(inputExpMonth);
-    cardExpMonthEL.innerHTML = inputExpMonthValue;
+    cardExpMonthEL.textContent = inputExpMonthValue;
   } else if (+inputExpMonthValue == 1) {
     hideErrorMessage(inputExpMonth);
-    cardExpMonthEL.innerHTML = `0${inputExpMonthValue}`;
+    cardExpMonthEL.textContent = `0${inputExpMonthValue}`;
   } else if (inputExpMonthValue === '') {
     hideErrorMessage(inputExpMonth);
-    cardExpMonthEL.innerHTML = `00`;
+    cardExpMonthEL.textContent = `00`;
   } else if (+inputExpMonthValue > 12) {
     showErrorMessage(inputExpMonth, `Invalid Month`); //check if month exists
   }
@@ -118,10 +135,10 @@ inputExpYear.addEventListener('input', () => {
 
   if (+inputExpYearValue > 0 && +inputExpYearValue < 99) {
     hideErrorMessage(inputExpYear);
-    cardExpYearEL.innerHTML = inputExpYearValue;
+    cardExpYearEL.textContent = inputExpYearValue;
   } else if (inputExpYearValue === '') {
     hideErrorMessage(inputExpYear);
-    cardExpYearEL.innerHTML = `00`;
+    cardExpYearEL.textContent = `00`;
   } else {
     showErrorMessage(inputExpYear, 'Ivalid Year');
   }
@@ -135,7 +152,7 @@ inputCVC.addEventListener('input', (e) => {
     showErrorMessage(inputCVC, 'Invalid numbers');
   } else {
     hideErrorMessage(inputCVC);
-    cardCVCEL.innerHTML = inputCVCValue;
+    cardCVCEL.textContent = inputCVCValue;
   }
 });
 
@@ -164,7 +181,7 @@ btnSubmit.addEventListener('click', (e) => {
   //Check if all fields are valid with the pattern help on HTML
   let formValid = true;
 
-  if (inputsValidation.includes(false)) {
+  if (inputsValidation.includes(false) && error) {
     formValid = false;
   }
 
