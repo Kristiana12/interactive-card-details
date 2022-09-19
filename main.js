@@ -105,8 +105,14 @@ const cardNumbersValidation = (input) => {
 
 inputName.addEventListener('input', () => {
   const inputNameValue = inputName.value;
-  cardNameEL.textContent = inputNameValue.toUpperCase().trim();
+
   if (inputNameValue !== '') {
+    cardNameEL.textContent = inputNameValue
+      .trim()
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .join(' ');
     hideErrorMessage(inputName);
   }
   cardholdersNameValidation(inputName);
