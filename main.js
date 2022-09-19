@@ -52,17 +52,27 @@ function checkIfBlank(input) {
   }
 }
 
+//Validate Cardholder's Name
+const cardholdersNameValidation = (input) => {
+  const inputValue = input.value;
+  const regex = /[0-9]/;
+
+  regex.test(inputValue)
+    ? showErrorMessage(input, 'No numbers allowed')
+    : hideErrorMessage(input);
+};
+
 //Validate Card Numbers
 const cardNumbersValidation = (input) => {
   //Remove all strings from being shown on the card UI
   let cardNumberValue = input.value.trim().replace(/[a-zA-Z]/g, '');
 
   //Allow only numbers -- NEW WAY
-  const regex = /[a-zA-Z\s]/i;
+  const regex = /[a-zA-Z\s]/;
   const value = input.value;
 
   if (cardNumberValue.length < 17) {
-    if (value.match(regex)) {
+    if (regex.test(value)) {
       showErrorMessage(input, 'Wrong format, numbers only');
     } else {
       //Add space after every 4th element
@@ -99,6 +109,7 @@ inputName.addEventListener('input', () => {
   if (inputNameValue !== '') {
     hideErrorMessage(inputName);
   }
+  cardholdersNameValidation(inputName);
 });
 
 inputCardNumber.addEventListener('input', (e) => {
