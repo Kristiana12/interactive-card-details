@@ -67,7 +67,7 @@ const cardNumbersValidation = (input) => {
   //Remove all strings from being shown on the card UI
   let cardNumberValue = input.value.trim().replace(/[a-zA-Z]/g, '');
 
-  //Allow only numbers -- NEW WAY
+  //Allow only numbers
   const regex = /[a-zA-Z\s]/;
   const value = input.value;
 
@@ -80,33 +80,13 @@ const cardNumbersValidation = (input) => {
       hideErrorMessage(input);
     }
   }
-
-  /* OLD WAY */
-  /* 
-  //Allow only numbers and backspace
-  if (cardNumberValue.length < 17) {
-    if (
-      (e.keyCode > 48 && e.keyCode < 58) ||
-      e.keyCode === 8 ||
-      (e.keyCode > 95 && e.keyCode < 106)
-    ) {
-      hideErrorMessage(input);
-      //Add space after every 4th element
-      cardNumbersEL.innerHTML = cardNumberValue.replace(/\d{4}(?=.)/g, '$& ');
-    } //Check if space is added
-    else if (e.keyCode === 32) {
-      showErrorMessage(input, 'Wrong format, no space allowed');
-    } else {
-      showErrorMessage(input, 'Wrong format, numbers only');
-    }
-  }
-  */
 };
 
 inputName.addEventListener('input', () => {
   const inputNameValue = inputName.value;
 
   if (inputNameValue !== '') {
+    //Uppercase first Letter on Name and Surname
     cardNameEL.textContent = inputNameValue
       .trim()
       .toLowerCase()
@@ -124,24 +104,23 @@ inputCardNumber.addEventListener('input', (e) => {
 
 //Validate Month
 inputExpMonth.addEventListener('input', (e) => {
-  const inputExpMonthValue = inputExpMonth.value;
+  const inputExpMonthValue = +inputExpMonth.value;
 
-  if (isNaN(+inputExpMonthValue)) {
+  if (isNaN(inputExpMonthValue)) {
     showErrorMessage(inputExpMonth, 'Ivalid Monat'); //Check if letters
-    console.log(isNaN(+inputExpMonthValue));
-  } else if (+inputExpMonthValue > 1 && +inputExpMonthValue < 10) {
+  } else if (inputExpMonthValue > 1 && inputExpMonthValue < 10) {
     hideErrorMessage(inputExpMonth);
     cardExpMonthEL.textContent = `0${inputExpMonthValue}`;
-  } else if (+inputExpMonthValue >= 10 && +inputExpMonthValue < 13) {
+  } else if (inputExpMonthValue >= 10 && inputExpMonthValue < 13) {
     hideErrorMessage(inputExpMonth);
     cardExpMonthEL.textContent = inputExpMonthValue;
-  } else if (+inputExpMonthValue == 1) {
+  } else if (inputExpMonthValue == 1) {
     hideErrorMessage(inputExpMonth);
     cardExpMonthEL.textContent = `0${inputExpMonthValue}`;
   } else if (inputExpMonthValue === '') {
     hideErrorMessage(inputExpMonth);
     cardExpMonthEL.textContent = `00`;
-  } else if (+inputExpMonthValue > 12) {
+  } else if (inputExpMonthValue > 12) {
     showErrorMessage(inputExpMonth, `Invalid Month`); //check if month exists
   }
 });
@@ -182,8 +161,7 @@ btnSubmit.addEventListener('click', (e) => {
   inputs.forEach((input, i) => {
     //Show error when empty
     checkIfBlank(input);
-
-    //Check if the inputs have the right length
+    //Check if each input has the right length
     if (i === 1 && input.value.length < 16) {
       showErrorMessage(input, `Numbers missing`); //cardnumbers
     } else if (i === 3 && input.value.length < 2) {
@@ -191,7 +169,6 @@ btnSubmit.addEventListener('click', (e) => {
     } else if (i === 4 && input.value.length < 3) {
       showErrorMessage(input, `Invalid CVC`); //cvc
     }
-
     inputsValidation.push(input.checkValidity());
   });
 

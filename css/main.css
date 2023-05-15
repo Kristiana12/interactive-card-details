@@ -2,6 +2,7 @@
   font-size: 0.6rem;
   letter-spacing: 1.5px;
 }
+
 @media screen and (min-width: 1200px) {
   .payment__card {
     font-size: 0.875rem;
@@ -12,6 +13,7 @@
   font-size: 1.25rem;
   text-align: center;
 }
+
 @media screen and (min-width: 1200px) {
   .payment__card-details .payment__card-details--front-side__numbers {
     font-size: 1.75rem;
@@ -43,7 +45,7 @@ form input {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 ::placeholder {
@@ -58,8 +60,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 @media screen and (min-width: 1200px) {
@@ -79,7 +82,7 @@ input[type=number] {
 }
 .payment__card {
   color: #ffffff;
-  background: url("../images/bg-main-mobile.png") no-repeat center/cover;
+  background: url('../images/bg-main-mobile.png') no-repeat center/cover;
   margin-bottom: 6rem;
 }
 @media screen and (min-width: 1200px) {
@@ -112,7 +115,7 @@ input[type=number] {
 }
 @media screen and (min-width: 1200px) {
   .payment__card--front-side img:first-of-type,
-.payment__card--back-side img {
+  .payment__card--back-side img {
     width: 448px;
   }
 }
