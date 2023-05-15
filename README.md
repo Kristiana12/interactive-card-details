@@ -73,4 +73,4 @@ Example:
 />
 ```
 
-**_Note_**: The pattern attribute works with the following input types: text, date, search, url, tel, email, and password. NO number input!!!
+**_Note_**: The pattern attribute works with the following input types: text, date, search, url, tel, email, and password. Number input type would not work.
